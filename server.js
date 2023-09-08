@@ -5,13 +5,6 @@ const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
 
-// Default values
-let defaultUser = {
-	user_id: "john_doe_17091999",
-	email: "john@xyz.com",
-	roll_number: "ABCD123",
-};
-
 app
 	.route("/bfhl")
 	.get((req, res) => {
@@ -19,6 +12,11 @@ app
 	})
 	.post((req, res) => {
 		try {
+			const defaultUser = {
+				user_id: "john_doe_17091999",
+				email: "john@xyz.com",
+				roll_number: "ABCD123",
+			};
 			const { data, user_id, email, roll_number } = req.body;
 
 			if (user_id !== undefined) defaultUser.user_id = user_id;
